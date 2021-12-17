@@ -17,7 +17,7 @@ describe('SwagLabs Test Suite', () => {
     })
 
     it('should sort by price "Low to high"', () => {
-        onInventoryPage.sortProductsContainer('Price (low to high)')
+        onInventoryPage.sortProductOptions('Price (low to high)')
     })
 
     it('should find and select an item', () => {
@@ -25,13 +25,15 @@ describe('SwagLabs Test Suite', () => {
 
     })
 
-    it('should sort elements, search item and select it', () => {
+    it.only('should sort, search and select a product', () => {
 
-        cy.get('[data-test="product_sort_container"]').select('Price (low to high)')
+        onInventoryPage.sortProductOptions('Price (low to high)')
 
-        cy.get('#item_4_title_link > .inventory_item_name').should('contain', 'Sauce Labs Backpack')
+        onInventoryPage.assertItemName('#item_4_title_link > .inventory_item_name', 'Sauce Labs Backpack')
 
-        cy.get('#inventory_container #item_4_title_link').contains('Sauce Labs Backpack').click()
+        onInventoryPage.selectAnItem('#inventory_container #item_4_title_link', 'Sauce Labs Backpack')
+
+        onInventoryPage.addItemtoCart('[data-test="add-to-cart-sauce-labs-backpack"]')
 
     })
 
