@@ -1,7 +1,7 @@
 
 export class InventoryPage {
 
-    sortProductOptions(option){
+    sortProductOptions(option) {
 
         cy.get('.select_container').then( dropdown => {
             cy.wrap(dropdown).click()
@@ -9,17 +9,17 @@ export class InventoryPage {
             })
     }
 
-    assertItemName(value, name){
+    assertItemName(value, name) {
 
         cy.get(value).should('contain', name)
     }
 
-    selectAnItem(value, itemName){
+    selectAnItem(value, itemName) {
 
         cy.get(value).contains(itemName).click()
     }
 
-    addItemtoCart(value){
+    addItemtoCart(value) {
 
         cy.get(value).click()
     }

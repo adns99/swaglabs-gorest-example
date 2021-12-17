@@ -3,29 +3,20 @@
 /// <reference types="cypress" />
 
 const { onInventoryPage } = require("../support/pageObjects/inventoryPage")
+const { onNavigationPage } = require("../support/pageObjects/navigationPage")
+const { onCartPage } = require("../support/pageObjects/cartPage")
+const { onCheckoutPage } = require("../support/pageObjects/checkoutPage")
 
 
 describe('SwagLabs Test Suite', () => {
 
+    // Login to the app command
     beforeEach('Log in to the app', () => {
         cy.loginToTheApp()
     })
 
-
-    it('should log into the app', () => {
-        cy.log('Logged in successfully!')
-    })
-
-    it('should sort by price "Low to high"', () => {
-        onInventoryPage.sortProductOptions('Price (low to high)')
-    })
-
-    it('should find and select an item', () => {
-        cy.get('.inventory_item_name').contains('Sauce Labs Backpack').click()
-
-    })
-
-    it.only('should sort, search and select a product', () => {
+    // Sorts items then selects a product and finish the purchase order
+    it('should follow possitive purchase flow', () => {
 
         onInventoryPage.sortProductOptions('Price (low to high)')
 
@@ -35,10 +26,18 @@ describe('SwagLabs Test Suite', () => {
 
         onInventoryPage.addItemtoCart('[data-test="add-to-cart-sauce-labs-backpack"]')
 
+        onNavigationPage.selectShoppingCart()
+
+        onCartPage.selectCheckoutButton()
+
+        onCheckoutPage.submitCheckoutForm('Ultra', 'IO', '99999')
+
+        onCheckoutPage.selectContinueButton()
+
+        onCheckoutPage.selectFinishButton()
+
+        onCheckoutPage.assertOrderIsComplete()
+
     })
 
-    // it('adds item to the cart and finishes purchase flow', () => {
-
-    // })
-    
 })
