@@ -3,5 +3,12 @@
     "ignoreTestFiles": "**/examples/**",
     "viewportWidth": 1920,
     "viewportHeight": 1080,
-    "chromeWebSecurity": false
+    "chromeWebSecurity": false,
+    "env": {
+        "RETRIES": 2,
+        "username": "standard_user",
+        "password": "secret_sauce",
+        "apiUrl": "https://gorest.co.in/public/v1"
+
+    }
 }

@@ -26,8 +26,8 @@
 
 Cypress.Commands.add('loginToTheApp', () => {
     cy.visit('/')
-    cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]').type('secret_sauce')
+    cy.get('[data-test="username"]').type(Cypress.env('username'))
+    cy.get('[data-test="password"]').type(Cypress.env('password'))
     cy.get('form').submit()
     cy.log('Logged in successfully!')
 })
