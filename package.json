@@ -1,0 +1,23 @@
+{
+  "name": "swaglabsautomationexample",
+  "version": "1.0.0",
+  "description": "Swag Labs FE Automation",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^9.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adns99/swaglabs-gorest-example.git"
+  },
+  "author": "Adrian Sanabria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adns99/swaglabs-gorest-example/issues"
+  },
+  "homepage": "https://github.com/adns99/swaglabs-gorest-example#readme"
+}
