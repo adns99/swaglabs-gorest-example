@@ -21,7 +21,7 @@ describe('Go Rest API Testing', () => {
 
     it('POST request: Create a new user', () => {
 
-        let randomValue = Math.floor(Math.random() * 7 ) + 100
+        let randomValue = Math.floor(10 + Math.random() * 10000 )
 
         let jsonBody = {
             
