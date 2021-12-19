@@ -2,25 +2,42 @@
 
 /// <reference types="cypress" />
 
+const { onInventoryPage } = require("../support/pageObjects/inventoryPage")
+const { onNavigationPage } = require("../support/pageObjects/navigationPage")
+const { onCartPage } = require("../support/pageObjects/cartPage")
+const { onCheckoutPage } = require("../support/pageObjects/checkoutPage")
+
+
 describe('SwagLabs Test Suite', () => {
 
+    // Login to the app command
     beforeEach('Log in to the app', () => {
         cy.loginToTheApp()
     })
 
-    it('should log into the app', () => {
-        cy.log('Logged in successfully!')
+    // Sorts items then selects a product and finish the purchase order
+    it('should follow possitive purchase flow', () => {
+
+        onInventoryPage.sortProductOptions('Price (low to high)')
+
+        onInventoryPage.assertItemName('#item_4_title_link > .inventory_item_name', 'Sauce Labs Backpack')
+
+        onInventoryPage.selectAnItem('#inventory_container #item_4_title_link', 'Sauce Labs Backpack')
+
+        onInventoryPage.addItemtoCart('[data-test="add-to-cart-sauce-labs-backpack"]')
+
+        onNavigationPage.selectShoppingCart()
+
+        onCartPage.selectCheckoutButton()
+
+        onCheckoutPage.submitCheckoutForm('Ultra', 'IO', '99999')
+
+        onCheckoutPage.selectContinueButton()
+
+        onCheckoutPage.selectFinishButton()
+
+        onCheckoutPage.assertOrderIsComplete()
+
     })
 
-    it('should select price "Low to high"', () => {
-        cy.get('.select_container').then( dropdown => {
-            cy.wrap(dropdown).click()
-            cy.get('.product_sort_container ').select('Price (low to high)')
-        } ) 
-    })
-
-    it.only('should find and select an item', () => {
-        cy.get('.inventory_item_name').contains('Sauce Labs Backpack').click()
-
-    })
 })
