@@ -8,7 +8,8 @@
         "RETRIES": 2,
         "username": "standard_user",
         "password": "secret_sauce",
-        "apiUrl": "https://gorest.co.in/public/v1"
+        "apiUrl": "https://gorest.co.in/public/v1",
+        "token": "6b5dac15e18a22cbca86cf7af3642d88ffc22c07d7d5f761edabe0237665df16"
 
     }
 }
