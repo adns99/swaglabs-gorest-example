@@ -19,7 +19,7 @@ You can run the test by using Npx `npx cypress open` or by using the script insi
 
 **Note:** Sometimes Cypress verifications requires that you run it twice (layer 8?).
 
-Choose the spect you want to run:
+Choose the spec you want to run:
 
 ![runningCypress](https://user-images.githubusercontent.com/4324156/146694696-7bc14422-bd24-4663-8747-0b1d26b5e84f.gif)
 
